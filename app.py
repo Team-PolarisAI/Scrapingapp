@@ -33,7 +33,7 @@ def get_worksheet():
     ]
 
     credentials = Credentials.from_service_account_file(
-        './secret.json',
+        st.secrets["secret"],
         scopes = scopes  
     )
     gc = gspread.authorize(credentials)
