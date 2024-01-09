@@ -32,15 +32,12 @@ def get_worksheet():
         'https://www.googleapis.com/auth/drive'
     ]
 
-    credentials = Credentials.from_service_account_file(
-        st.secrets["secret"],
-        scopes = scopes  
-    )
+    service_account_info = st.secrets["secret"]
+    credentials = Credentials.from_service_account_info(service_account_info, scopes=scopes)
     gc = gspread.authorize(credentials)
 
     SP_SHEET_KEY = '1YTwCaW1-Nrapm_y-fAXYYG8w5Q_5Zaz7dv4ghDGeOFE'
     sh = gc.open_by_key(SP_SHEET_KEY)
-
     SP_SHEET = 'db'
     worksheet = sh.worksheet(SP_SHEET)
 
